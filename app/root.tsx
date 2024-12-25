@@ -10,19 +10,10 @@ import type { LinksFunction } from "@remix-run/node";
 import "./tailwind.css";
 
 export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
+  { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function App() {
   return (
     <html lang="en">
       <head>
@@ -31,15 +22,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="font-sans bg-gray-100 text-gray-900">
+        <header className="bg-blue-600 text-white p-4 shadow-md">
+          <div className="container mx-auto">
+            <h1 className="text-2xl font-bold">Utility Tools</h1>
+          </div>
+        </header>
+        <main className="container mx-auto p-4">
+          <Outlet />
+        </main>
+        <footer className="bg-gray-800 text-white p-4 mt-8">
+          <div className="container mx-auto text-center">
+            <p>&copy; 2023 Utility Tools. All rights reserved.</p>
+          </div>
+        </footer>
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }
