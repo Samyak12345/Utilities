@@ -22,7 +22,42 @@ export const loader: LoaderFunction = async ({ request }) => {
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
       </url>
-      <!-- Add more URLs here -->
+      <url>
+        <loc>${url.origin}/time-date-utilities</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+      <url>
+        <loc>${url.origin}/math-calculators</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+      <url>
+        <loc>${url.origin}/unit-conversions</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+      <url>
+        <loc>${url.origin}/color-design-tools</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+      <url>
+        <loc>${url.origin}/data-utilities</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+      <url>
+        <loc>${url.origin}/programming-utilities</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
     </urlset>
   `;
   return new Response(sitemap, {
