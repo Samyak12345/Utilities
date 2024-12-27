@@ -19,16 +19,16 @@ export const meta: MetaFunction = () => [
   { name: "title", content: "Convertify Tools - Your One-Stop Solution for All Utilities" },
   { name: "viewport", content: "width=device-width, initial-scale=1" },
   { name: "description", content: "Convertify Tools offers a wide range of tools for file conversions, text utilities, date and time utilities, and more." },
-  { name: "keywords", content: "utility tools, file conversions, text utilities, date utilities, time utilities, seo" },
+  { name: "keywords", content: "Convertify tools, file conversions, text utilities, date utilities, time utilities, seo" },
   { property: "og:title", content: "Convertify Tools - Your One-Stop Solution for All Conversions" },
   { property: "og:description", content: "Convertify Tools offers a wide range of tools for file conversions, text utilities, date and time utilities, and more." },
   { property: "og:type", content: "website" },
   { property: "og:url", content: "https://www.convertifytools.com/" },
-  //{ property: "og:image", content: "https://www.convertifytools.com/og-image.jpg" },
+  { property: "og:image", content: "https://www.convertifytools.com/og-image.jpg" },
   { name: "twitter:card", content: "summary_large_image" },
   { name: "twitter:title", content: "Utility Tools - Your One-Stop Solution for All Utilities" },
   { name: "twitter:description", content: "Utility Tools offers a wide range of tools for file conversions, text utilities, date and time utilities, and more." },
- // { name: "twitter:image", content: "https://www.convertifytools.com/twitter-image.jpg" },
+  { name: "twitter:image", content: "https://www.convertifytools.com/twitter-image.jpg" },
 ];
 
 export default function App() {
@@ -39,23 +39,24 @@ export default function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1635371757353656"
-     crossOrigin="anonymous"></script>
-
-<script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Utility Tools",
-            "url": "https://www.convertifytools.com/",
-            "description": "Convertify Tools offers a wide range of tools for file conversions, text utilities, date and time utilities, and more.",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://www.convertifytools.com/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          })}
-        </script>
+        {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1635371757353656" crossOrigin="anonymous"></script> */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Utility Tools",
+              "url": "https://www.convertifytools.com/",
+              "description": "Convertify Tools offers a wide range of tools for file conversions, text utilities, date and time utilities, and more.",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.convertifytools.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }),
+          }}
+        />
       </head>
       <body className="font-sans bg-secondary-dark text-white">
         <header className="bg-primary-dark text-white p-4 shadow-md">
