@@ -19,14 +19,14 @@ export default function TextUtilities() {
   const ActiveComponent = tabs.find(tab => tab.name === activeTab)?.component;
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-secondary-dark p-6 rounded-lg shadow-md prose prose-invert">
       <h2 className="text-2xl font-bold mb-4">Text Utilities</h2>
       <div className="mb-4">
         <nav className="flex space-x-4">
           {tabs.map(tab => (
             <button
               key={tab.name}
-              className={`px-4 py-2 rounded ${activeTab === tab.name ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              className={`px-4 py-2 rounded ${activeTab === tab.name ? 'bg-primary-dark text-white' : 'bg-primary-light text-primary-dark'}`}
               onClick={() => setActiveTab(tab.name)}
             >
               {tab.name}

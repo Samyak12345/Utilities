@@ -47,3 +47,23 @@ nav ul li a:hover {
 nav ul li a.bg-primary-dark {
   @apply text-white;
 }
+
+.textarea {
+  @apply w-full p-2 border border-gray-300 rounded mb-4 resize-y;
+}
+
+.button {
+  @apply bg-primary-dark text-white px-4 py-2 rounded mb-4 border-none cursor-pointer transition-colors duration-300;
+}
+
+.button:hover {
+  @apply bg-primary-light text-primary-dark;
+}
+
+.flex {
+  @apply flex gap-4 mb-4 flex-wrap;
+}
+
+.flex .textarea {
+  @apply flex-1 mb-0;
+}
