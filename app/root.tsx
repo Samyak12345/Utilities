@@ -5,13 +5,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "@remix-run/react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" },
+  { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap" },
 ];
 
 export const meta: MetaFunction = () => [
@@ -32,6 +33,8 @@ export const meta: MetaFunction = () => [
 ];
 
 export default function App() {
+  const location = useLocation();
+
   return (
     <html lang="en">
       <head>
@@ -58,29 +61,84 @@ export default function App() {
           }}
         />
       </head>
-      <body className="font-sans bg-secondary-dark text-white">
-        <header className="bg-primary-dark text-white p-4 shadow-md">
+      <body className="font-sans bg-secondary-dark text-primary-light">
+        <header className="bg-secondary-dark text-primary-light p-4 shadow-md sticky top-0 z-50">
           <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-extrabold tracking-tight"><Link to="/" className="transition-colors duration-300">Convertify Tools</Link></h1>
+            <h1 className="text-xl font-extrabold tracking-tight"><Link to="/" className="transition-colors duration-300">Convertify Tools</Link></h1>
             <nav>
               <ul className="flex space-x-4">
-                <li><Link to="/" className="text-base font-medium hover:text-primary-light transition-colors duration-300">Home</Link></li>
-                <li><Link to="/file-conversions" className="text-base font-medium hover:text-primary-light transition-colors duration-300">File Conversions</Link></li>
-                <li><Link to="/text-utilities" className="text-base font-medium hover:text-primary-light transition-colors duration-300">Text Utilities</Link></li>
-                <li><Link to="/time-date-utilities" className="text-base font-medium hover:text-primary-light transition-colors duration-300">Time and Date Utilities</Link></li>
-                <li><Link to="/math-calculators" className="text-base font-medium hover:text-primary-light transition-colors duration-300">Math Calculators</Link></li>
-                <li><Link to="/unit-conversions" className="text-base font-medium hover:text-primary-light transition-colors duration-300">Unit Conversions</Link></li>
-                <li><Link to="/color-design-tools" className="text-base font-medium hover:text-primary-light transition-colors duration-300">Color & Design Tools</Link></li>
-                <li><Link to="/data-utilities" className="text-base font-medium hover:text-primary-light transition-colors duration-300">Data Utilities</Link></li>
-                <li><Link to="/programming-utilities" className="text-base font-medium hover:text-primary-light transition-colors duration-300">Programming Utilities</Link></li>
+                <li>
+                  <Link
+                    to="/file-conversions"
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/file-conversions" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                  >
+                    File Conversions
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/text-utilities"
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/text-utilities" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                  >
+                    Text Utilities
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/time-date-utilities"
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/time-date-utilities" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                  >
+                    Time and Date Utilities
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/math-calculators"
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/math-calculators" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                  >
+                    Math Calculators
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/unit-conversions"
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/unit-conversions" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                  >
+                    Unit Conversions
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/color-design-tools"
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/color-design-tools" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                  >
+                    Color & Design Tools
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/data-utilities"
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/data-utilities" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                  >
+                    Data Utilities
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/programming-utilities"
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/programming-utilities" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                  >
+                    Programming Utilities
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>
         </header>
-        <main className="container mx-auto p-4">
+        <main className="container mx-auto p-4 prose prose-invert">
           <Outlet />
         </main>
-        <footer className="bg-primary-dark text-white p-4 mt-8">
+        <footer className="bg-secondary-dark text-primary-light p-4 mt-8">
           <div className="container mx-auto text-center">
             <p>&copy; 2024 Convertify Tools. All rights reserved.</p>
           </div>

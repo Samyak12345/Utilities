@@ -13,13 +13,13 @@ export default function CountWordsCharacters() {
   return (
     <div>
       <textarea
-        className="w-full p-2 border border-gray-300 rounded mb-4"
+        className="w-full p-2 border border-gray-300 rounded mb-4 resize-y"
         rows={5}
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter your text here..."
       />
-      <button className="bg-blue-500 text-white px-4 py-2 rounded mb-4" onClick={handleCount}>
+      <button className="bg-primary-dark text-white px-4 py-2 rounded mb-4 border-none cursor-pointer transition-colors duration-300 hover:bg-primary-light hover:text-primary-dark" onClick={handleCount}>
         Count Words and Characters
       </button>
       <div className="mb-4">
