@@ -42,24 +42,6 @@ export default function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1635371757353656" crossOrigin="anonymous"></script> */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Utility Tools",
-              "url": "https://www.convertifytools.com/",
-              "description": "Convertify Tools offers a wide range of tools for file conversions, text utilities, date and time utilities, and more.",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://www.convertifytools.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            }),
-          }}
-        />
       </head>
       <body className="font-sans bg-secondary-dark text-primary-light">
         <header className="bg-secondary-dark text-primary-light p-4 shadow-md sticky top-0 z-50">
@@ -78,7 +60,7 @@ export default function App() {
                 <li>
                   <Link
                     to="/text-utilities"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/text-utilities" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+                    className={`px-3 py-1.5 rounded text-sm ${location.pathname.startsWith("/text-utilities") ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
                   >
                     Text Utilities
                   </Link>

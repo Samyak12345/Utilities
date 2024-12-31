@@ -1,42 +1,35 @@
-import { useState } from "react";
-import RemoveReplaceWhitespaces from "~/components/Text-Utilities/RemoveReplaceWhitespaces";
-import FindReplaceText from "~/components/Text-Utilities/FindReplaceText";
-import CountWordsCharacters from "~/components/Text-Utilities/CountWordsCharacters";
-import ReverseText from "~/components/Text-Utilities/ReverseText";
-import UpperLowerCase from "~/components/Text-Utilities/UpperLowerCase";
+// import { Link } from "@remix-run/react";
 
-const tabs = [
-  { name: "Upper/Lower Case", component: UpperLowerCase },
-  { name: "Remove/Replace Whitespaces", component: RemoveReplaceWhitespaces },
-  { name: "Find and Replace Text", component: FindReplaceText },
-  { name: "Count Words and Characters", component: CountWordsCharacters },
-  { name: "Reverse Text", component: ReverseText },
-];
+// export default function TextUtilities() {
+//   return (
+//     <div className="bg-secondary-dark p-6 rounded-lg shadow-md prose prose-invert">
+//       <h2 className="text-2xl font-bold mb-4">Text Utilities</h2>
+//       <ul className="list-disc pl-5 space-y-2">
+//         <li><Link to="/text-utilities/upper-lower-case" className="text-blue-500 hover:underline">Upper/Lower Case</Link></li>
+//         <li><Link to="/text-utilities/remove-replace-whitespaces" className="text-blue-500 hover:underline">Remove/Replace Whitespaces</Link></li>
+//         <li><Link to="/text-utilities/find-replace-text" className="text-blue-500 hover:underline">Find and Replace Text</Link></li>
+//         <li><Link to="/text-utilities/count-words-characters" className="text-blue-500 hover:underline">Count Words and Characters</Link></li>
+//         <li><Link to="/text-utilities/reverse-text" className="text-blue-500 hover:underline">Reverse Text</Link></li>
+//       </ul>
+//     </div>
+//   );
+// }
+
+
+import { Outlet, Link } from "@remix-run/react";
 
 export default function TextUtilities() {
-  const [activeTab, setActiveTab] = useState(tabs[0].name);
-
-  const ActiveComponent = tabs.find(tab => tab.name === activeTab)?.component;
-
   return (
     <div className="bg-secondary-dark p-6 rounded-lg shadow-md prose prose-invert">
       <h2 className="text-2xl font-bold mb-4">Text Utilities</h2>
-      <div className="mb-4">
-        <nav className="flex space-x-4">
-          {tabs.map(tab => (
-            <button
-              key={tab.name}
-              className={`px-4 py-2 rounded ${activeTab === tab.name ? 'bg-primary-dark text-white' : 'bg-primary-light text-primary-dark'}`}
-              onClick={() => setActiveTab(tab.name)}
-            >
-              {tab.name}
-            </button>
-          ))}
-        </nav>
-      </div>
-      <div>
-        {ActiveComponent && <ActiveComponent />}
-      </div>
+      {/* <ul className="list-disc pl-5 space-y-2">
+        <li><Link to="/text-utilities/upper-lower-case" className="text-blue-500 hover:underline">Upper/Lower Case</Link></li>
+        <li><Link to="/text-utilities/remove-replace-whitespaces" className="text-blue-500 hover:underline">Remove/Replace Whitespaces</Link></li>
+        <li><Link to="/text-utilities/find-replace-text" className="text-blue-500 hover:underline">Find and Replace Text</Link></li>
+        <li><Link to="/text-utilities/count-words-characters" className="text-blue-500 hover:underline">Count Words and Characters</Link></li>
+        <li><Link to="/text-utilities/reverse-text" className="text-blue-500 hover:underline">Reverse Text</Link></li>
+      </ul> */}
+      <Outlet />
     </div>
   );
 }
