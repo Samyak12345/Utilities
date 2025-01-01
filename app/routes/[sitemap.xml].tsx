@@ -58,6 +58,42 @@ import { LoaderFunction } from "@remix-run/node";
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
       </url>
+      <url>
+        <loc>${url.origin}/networking-utilities</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+      <url>
+        <loc>${url.origin}/upper-lower-case</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+       <url>
+        <loc>${url.origin}/count-words-characters</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+       <url>
+        <loc>${url.origin}/find-replace-text</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+       <url>
+        <loc>${url.origin}/remove-replace-whitespaces</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+         <url>
+        <loc>${url.origin}/reverse-text</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
     </urlset>
   `;
   return new Response(sitemap, {

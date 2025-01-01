@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "@remix-run/react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import { useState } from "react";
 
 import "./tailwind.css";
 
@@ -34,6 +35,15 @@ export const meta: MetaFunction = () => [
 
 export default function App() {
   const location = useLocation();
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+
+  const handleMenuClick = (menu: string) => {
+    setActiveMenu(activeMenu === menu ? null : menu);
+  };
+
+  const handleSubmenuClick = () => {
+    setActiveMenu(null);
+  };
 
   return (
     <html lang="en">
@@ -46,77 +56,54 @@ export default function App() {
       <body className="font-sans bg-secondary-dark text-primary-light">
         <header className="bg-secondary-dark text-primary-light p-4 shadow-md sticky top-0 z-50">
           <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-xl font-extrabold tracking-tight"><Link to="/" className="transition-colors duration-300">Convertify Tools</Link></h1>
+            <h1 className="text-xl font-extrabold tracking-tight">
+              <Link to="/" className="transition-colors duration-300">Convertify Tools</Link>
+            </h1>
             <nav>
-              <ul className="flex space-x-4">
-                <li>
-                  <Link
-                    to="/file-conversions"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/file-conversions" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
+              <ul className="flex space-x-4 relative">
+                {[
+                  { title: "File Conversions", link: "/file-conversions", submenu: [] },
+                  { title: "Text Utilities", link: "/text-utilities", submenu: [
+                    { title: "Upper/Lower Case", link: "/upper-lower-case" },
+                    { title: "Remove/Replace Whitespaces", link: "/remove-replace-whitespaces" },
+                    { title: "Find and Replace Text", link: "/find-replace-text" },
+                    { title: "Count Words and Characters", link: "/count-words-characters" },
+                    { title: "Reverse Text", link: "/reverse-text" },
+                  ]},
+                  { title: "Time and Date Utilities", link: "/time-date-utilities", submenu: [] },
+                  { title: "Math Calculators", link: "/math-calculators", submenu: [] },
+                  { title: "Unit Conversions", link: "/unit-conversions", submenu: [] },
+                  { title: "Color & Design Tools", link: "/color-design-tools", submenu: [] },
+                  { title: "Data Utilities", link: "/data-utilities", submenu: [] },
+                  { title: "Programming Utilities", link: "/programming-utilities", submenu: [] },
+                ].map(({ title, link, submenu }) => (
+                  <li className="group relative" key={title}>
+                  <button
+                    onClick={() => handleMenuClick(title)}
+                    className={`px-4 py-2 rounded text-sm ${location.pathname.startsWith(link) ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
                   >
-                    File Conversions
-                  </Link>
+                    {title}
+                  </button>
+                  <ul className="absolute left-0 top-full mt-2 bg-secondary-dark text-primary-light shadow-lg rounded-md w-56 group-hover:block hidden">
+                    {submenu.map((item) => (
+                      <li key={typeof item === "string" ? item : item.title} className="border-b border-secondary-light last:border-none">
+                        <Link
+                          to={typeof item === "string" ? item : item.link}
+                          className="block px-4 py-2 text-sm hover:bg-primary-dark hover:text-white"
+                        >
+                          {typeof item === "string" ? item : item.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
-                <li>
-                  <Link
-                    to="/text-utilities"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname.startsWith("/text-utilities") ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
-                  >
-                    Text Utilities
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/time-date-utilities"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/time-date-utilities" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
-                  >
-                    Time and Date Utilities
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/math-calculators"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/math-calculators" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
-                  >
-                    Math Calculators
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/unit-conversions"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/unit-conversions" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
-                  >
-                    Unit Conversions
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/color-design-tools"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/color-design-tools" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
-                  >
-                    Color & Design Tools
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/data-utilities"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/data-utilities" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
-                  >
-                    Data Utilities
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/programming-utilities"
-                    className={`px-3 py-1.5 rounded text-sm ${location.pathname === "/programming-utilities" ? "bg-primary-dark text-white" : "hover:bg-primary-light hover:text-primary-dark"}`}
-                  >
-                    Programming Utilities
-                  </Link>
-                </li>
+                
+                ))}
               </ul>
             </nav>
           </div>
         </header>
+
         <main className="container mx-auto p-4 prose prose-invert">
           <Outlet />
         </main>

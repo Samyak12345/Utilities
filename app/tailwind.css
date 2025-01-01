@@ -28,22 +28,36 @@ footer {
   @apply prose-invert;
 }
 
+
+nav ul li ul {
+  @apply absolute left-0 top-full mt-2 hidden group-hover:block group-focus-within:block bg-secondary-dark text-primary-light shadow-lg rounded-md w-56; /* Set consistent width */
+  padding: 0; /* Remove extra padding around the menu */
+}
+
+nav ul li ul li {
+  @apply border-b border-secondary-light last:border-none; /* Consistent border styling */
+}
+
+nav ul li ul li a {
+  @apply block px-4 py-2 text-sm hover:bg-primary-dark hover:text-white; /* Make the link a block element */
+  width: 100%; /* Ensure the hover covers the full width of the menu */
+}
+
+
+nav ul li button {
+  @apply px-4 py-2 text-sm rounded transition-colors duration-300;
+}
+
 nav ul {
   @apply flex space-x-4;
 }
 
 nav ul li {
-  @apply flex items-center;
+  @apply relative;
 }
 
-nav ul li a {
-  @apply px-3 py-1.5 rounded text-sm transition-colors duration-300;
+nav ul li ul li:first-child a {
+  @apply border-none; /* Ensure the first item in the submenu is aligned correctly */
 }
 
-nav ul li a:hover {
-  @apply bg-primary-light text-primary-dark;
-}
 
-nav ul li a.bg-primary-dark {
-  @apply text-white;
-}
