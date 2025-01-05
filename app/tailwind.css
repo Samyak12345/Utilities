@@ -28,21 +28,24 @@ footer {
   @apply prose-invert;
 }
 
+nav ul li {
+  position: relative; /* Ensure the submenu is positioned relative to the parent */
+}
 
 nav ul li ul {
-  @apply absolute left-0 top-full mt-2 hidden group-hover:block group-focus-within:block bg-secondary-dark text-primary-light shadow-lg rounded-md w-56; /* Set consistent width */
-  padding: 0; /* Remove extra padding around the menu */
+  @apply absolute left-0 top-full mt-0 hidden group-hover:block; /* Remove gap and ensure smooth transition */
+  z-index: 10; /* Ensure the submenu appears above other elements */
 }
+
+nav ul li ul li a {
+  @apply block px-4 py-2 text-sm hover:bg-primary-dark hover:text-white;
+  width: 100%; /* Ensure hover covers the entire submenu width */
+}
+
 
 nav ul li ul li {
   @apply border-b border-secondary-light last:border-none; /* Consistent border styling */
 }
-
-nav ul li ul li a {
-  @apply block px-4 py-2 text-sm hover:bg-primary-dark hover:text-white; /* Make the link a block element */
-  width: 100%; /* Ensure the hover covers the full width of the menu */
-}
-
 
 nav ul li button {
   @apply px-4 py-2 text-sm rounded transition-colors duration-300;
@@ -52,9 +55,6 @@ nav ul {
   @apply flex space-x-4;
 }
 
-nav ul li {
-  @apply relative;
-}
 
 nav ul li ul li:first-child a {
   @apply border-none; /* Ensure the first item in the submenu is aligned correctly */
