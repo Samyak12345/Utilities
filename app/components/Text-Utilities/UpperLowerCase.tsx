@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Button from "~/components/common/button";
+import InputBox from "~/components/common/inputBox";
+import OutputBox from "~/components/common/outputBox";
 
 export default function UpperLowerCase() {
   const [text, setText] = useState("");
@@ -14,28 +17,12 @@ export default function UpperLowerCase() {
 
   return (
     <div>
-      <textarea
-        className="w-full p-2 border border-gray-300 rounded mb-4 resize-y"
-        rows={5}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Enter your text here..."
-      />
+      <InputBox value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter your text here..." />
       <div className="flex gap-4 mb-4 flex-wrap">
-        <button className="bg-primary-dark text-white px-4 py-2 rounded mb-4 border-none cursor-pointer transition-colors duration-300 hover:bg-primary-light hover:text-primary-dark" onClick={handleUppercase}>
-          Convert to Uppercase
-        </button>
-        <button className="bg-primary-dark text-white px-4 py-2 rounded mb-4 border-none cursor-pointer transition-colors duration-300 hover:bg-primary-light hover:text-primary-dark" onClick={handleLowercase}>
-          Convert to Lowercase
-        </button>
+        <Button onClick={handleUppercase}>Convert to Uppercase</Button>
+        <Button onClick={handleLowercase}>Convert to Lowercase</Button>
       </div>
-      <textarea
-        className="w-full p-2 border border-gray-300 rounded mb-4 resize-y"
-        rows={5}
-        value={result}
-        readOnly
-        placeholder="Result will appear here..."
-      />
+      <OutputBox value={result} placeholder="Result will appear here..." />
     </div>
   );
 }

@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Button from "~/components/common/button";
+import InputBox from "~/components/common/inputBox";
+import OutputBox from "~/components/common/outputBox";
 
 export default function ReverseText() {
   const [text, setText] = useState("");
@@ -10,23 +13,9 @@ export default function ReverseText() {
 
   return (
     <div>
-      <textarea
-        className="w-full p-2 border border-gray-300 rounded mb-4 resize-y"
-        rows={5}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Enter your text here..."
-      />
-      <button className="bg-primary-dark text-white px-4 py-2 rounded mb-4 border-none cursor-pointer transition-colors duration-300 hover:bg-primary-light hover:text-primary-dark" onClick={handleReverse}>
-        Reverse Text
-      </button>
-      <textarea
-        className="w-full p-2 border border-gray-300 rounded mb-4 resize-y"
-        rows={5}
-        value={result}
-        readOnly
-        placeholder="Result will appear here..."
-      />
+      <InputBox value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter your text here..." />
+      <Button onClick={handleReverse}>Reverse Text</Button>
+      <OutputBox value={result} placeholder="Result will appear here..." />
     </div>
   );
 }
