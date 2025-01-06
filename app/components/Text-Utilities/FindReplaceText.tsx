@@ -2,6 +2,8 @@ import { useState } from "react";
 import Button from "~/components/common/button";
 import InputBox from "~/components/common/inputBox";
 import OutputBox from "~/components/common/outputBox";
+import CopyToClipboard from "~/components/common/copyToClipboard";
+import { toast } from "react-toastify";
 
 export default function FindReplaceText() {
   const [text, setText] = useState("");
@@ -10,6 +12,10 @@ export default function FindReplaceText() {
   const [result, setResult] = useState("");
 
   const handleFindReplace = () => {
+    if (!find) {
+      toast.error("Find text cannot be empty");
+      return;
+    }
     setResult(text.replace(new RegExp(find, "g"), replace));
   };
 
@@ -22,6 +28,7 @@ export default function FindReplaceText() {
       </div>
       <Button onClick={handleFindReplace}>Find and Replace</Button>
       <OutputBox value={result} placeholder="Result will appear here..." />
+      <CopyToClipboard text={result} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "~/components/common/button";
 import OutputBox from "~/components/common/outputBox";
+import CopyToClipboard from "~/components/common/copyToClipboard";
 
 export default function RandomColorGenerator() {
   const [color, setColor] = useState("");
@@ -19,6 +20,9 @@ export default function RandomColorGenerator() {
       <Button onClick={handleGenerate}>Generate Random Color</Button>
       <OutputBox value={color} placeholder="Random color will appear here..." />
       <div style={{ backgroundColor: color, height: "50px", width: "100px", marginTop: "10px" }}></div>
+      <div className="mt-4">
+        <CopyToClipboard text={color} />
+      </div>
     </div>
   );
 }

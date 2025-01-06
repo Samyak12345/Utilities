@@ -1,0 +1,22 @@
+/* app/components/common/toast.css */
+.Toastify__toast {
+    background-color: #111827; /* Secondary dark color */
+    color: #e5e7eb; /* Primary light color */
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .Toastify__toast--success {
+    border-left: 5px solid #4b5563; /* Primary dark color */
+  }
+  
+  .Toastify__toast--error {
+    border-left: 5px solid #ef4444; /* Red color for errors */
+  }
+  
+  .Toastify__close-button {
+    color: #e5e7eb; /* Primary light color */
+  }
+  
+  .Toastify__progress-bar {
+    background-color: #4b5563; /* Primary dark color */
+  }
