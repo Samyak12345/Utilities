@@ -2,16 +2,26 @@ import { useState } from "react";
 import Button from "~/components/common/button";
 import InputBox from "~/components/common/inputBox";
 import OutputBox from "~/components/common/outputBox";
+import CopyToClipboard from "~/components/common/copyToClipboard";
+import { toast } from "react-toastify";
 
 export default function RemoveReplaceWhitespaces() {
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
 
   const handleRemoveWhitespaces = () => {
+    if (!text.trim()) {
+      toast.error("Input text cannot be empty");
+      return;
+    }
     setResult(text.replace(/\s+/g, ""));
   };
 
   const handleReplaceWhitespaces = () => {
+    if (!text.trim()) {
+      toast.error("Input text cannot be empty");
+      return;
+    }
     setResult(text.replace(/\s+/g, "-"));
   };
 
@@ -23,6 +33,7 @@ export default function RemoveReplaceWhitespaces() {
         <Button onClick={handleReplaceWhitespaces}>Replace Whitespaces with "-"</Button>
       </div>
       <OutputBox value={result} placeholder="Result will appear here..." />
+      <CopyToClipboard text={result} />
     </div>
   );
 }

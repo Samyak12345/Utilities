@@ -2,6 +2,8 @@ import { useState } from "react";
 import Button from "~/components/common/button";
 import InputBox from "~/components/common/inputBox";
 import OutputBox from "~/components/common/outputBox";
+import CopyToClipboard from "~/components/common/copyToClipboard";
+import { toast } from "react-toastify";
 
 // Utility to flatten nested objects
 const flattenObject = (obj: any, parentKey = "", result: { [key: string]: any } = {}) => {
@@ -19,7 +21,7 @@ const flattenObject = (obj: any, parentKey = "", result: { [key: string]: any } 
 };
 
 // Recursively process any JSON type
-const processJsonToArray = (input:any) => {
+const processJsonToArray = (input: any) => {
   if (Array.isArray(input)) {
     return input.map((item) => flattenObject(item));
   } else if (typeof input === "object" && input !== null) {
@@ -61,9 +63,9 @@ export default function JsonToCsv() {
       setCsv(csvData);
     } catch (error) {
       if (error instanceof Error) {
-        setCsv(`Invalid JSON: ${error.message}`);
+        toast.error(`Invalid JSON: ${error.message}`);
       } else {
-        setCsv("Invalid JSON: An unknown error occurred.");
+        toast.error("Invalid JSON: An unknown error occurred.");
       }
     }
   };
@@ -77,6 +79,7 @@ export default function JsonToCsv() {
       />
       <Button onClick={handleConvert}>Convert to CSV</Button>
       <OutputBox value={csv} placeholder="CSV output will appear here..." />
+      <CopyToClipboard text={csv} />
     </div>
   );
 }
