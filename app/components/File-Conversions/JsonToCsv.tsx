@@ -3,6 +3,8 @@ import Button from "~/components/common/button";
 import InputBox from "~/components/common/inputBox";
 import OutputBox from "~/components/common/outputBox";
 import CopyToClipboard from "~/components/common/copyToClipboard";
+import FileUpload from "~/components/common/fileUpload";
+import DownloadButton from "~/components/common/downloadButton";
 import { toast } from "react-toastify";
 
 // Utility to flatten nested objects
@@ -70,8 +72,19 @@ export default function JsonToCsv() {
     }
   };
 
+  const handleFileSelect = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target && e.target.result) {
+        setJson(e.target.result as string);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div>
+      <FileUpload onFileSelect={handleFileSelect} />
       <InputBox
         value={json}
         onChange={(e) => setJson(e.target.value)}
@@ -80,6 +93,7 @@ export default function JsonToCsv() {
       <Button onClick={handleConvert}>Convert to CSV</Button>
       <OutputBox value={csv} placeholder="CSV output will appear here..." />
       <CopyToClipboard text={csv} />
+      <DownloadButton data={csv} filename="output.csv" mimeType="text/csv" />
     </div>
   );
 }

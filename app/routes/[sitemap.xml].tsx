@@ -59,12 +59,6 @@ export const loader: LoaderFunction = async ({ request }) => {
         <priority>0.8</priority>
       </url>
       <url>
-        <loc>${url.origin}/networking-utilities</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-      </url>
-      <url>
         <loc>${url.origin}/upper-lower-case</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>weekly</changefreq>

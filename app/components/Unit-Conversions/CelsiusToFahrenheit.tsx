@@ -18,6 +18,16 @@ export default function CelsiusToFahrenheit() {
     setFahrenheit(((celsiusValue * 9) / 5 + 32).toFixed(2));
   };
 
+  const handleFileSelect = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target && e.target.result) {
+        setCelsius(e.target.result as string);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div>
       <InputBox value={celsius} onChange={(e) => setCelsius(e.target.value)} placeholder="Enter Celsius here..." />

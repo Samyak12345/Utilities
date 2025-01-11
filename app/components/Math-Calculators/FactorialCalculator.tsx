@@ -19,6 +19,16 @@ export default function FactorialCalculator() {
     setResult(factorial(num).toString());
   };
 
+  const handleFileSelect = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target && e.target.result) {
+        setNumber(e.target.result as string);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div>
       <InputBox value={number} onChange={(e) => setNumber(e.target.value)} placeholder="Enter a number here..." />

@@ -20,6 +20,16 @@ export default function UnixToHumanDate() {
     setDate(dateObj.toLocaleString(undefined, options));
   };
 
+  const handleFileSelect = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target && e.target.result) {
+        setTimestamp(e.target.result as string);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div>
       <InputBox value={timestamp} onChange={(e) => setTimestamp(e.target.value)} placeholder="Enter Unix timestamp here..." />
