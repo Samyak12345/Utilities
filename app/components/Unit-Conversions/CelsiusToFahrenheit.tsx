@@ -19,10 +19,12 @@ export default function CelsiusToFahrenheit() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <InputBox value={celsius} onChange={(e) => setCelsius(e.target.value)} placeholder="Enter Celsius here..." />
-      <Button onClick={handleConvert}>Convert to Fahrenheit</Button>
-      <OutputBox value={fahrenheit} placeholder="Fahrenheit output will appear here..." />
+      <Button onClick={handleConvert} className="mb-4">
+        Convert to Fahrenheit
+      </Button>
+      <OutputBox value={fahrenheit} placeholder="Fahrenheit output will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={fahrenheit} />
     </div>
   );

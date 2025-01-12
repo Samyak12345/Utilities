@@ -3,6 +3,8 @@ import Button from "~/components/common/button";
 import InputBox from "~/components/common/inputBox";
 import OutputBox from "~/components/common/outputBox";
 import CopyToClipboard from "~/components/common/copyToClipboard";
+import FileUpload from "~/components/common/fileUpload";
+import DownloadButton from "~/components/common/downloadButton";
 import { toast } from "react-toastify";
 
 export default function MinifyJson() {
@@ -18,12 +20,26 @@ export default function MinifyJson() {
     }
   };
 
+  const handleFileSelect = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target && e.target.result) {
+        setJson(e.target.result as string);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
-    <div>
+    <div className="flex flex-col items-center">
+      <FileUpload onFileSelect={handleFileSelect} />
       <InputBox value={json} onChange={(e) => setJson(e.target.value)} placeholder="Enter JSON here..." />
-      <Button onClick={handleMinify}>Minify JSON</Button>
-      <OutputBox value={minifiedJson} placeholder="Minified JSON will appear here..." />
+      <Button onClick={handleMinify} className="mb-4">
+        Minify JSON
+      </Button>
+      <OutputBox value={minifiedJson} placeholder="Minified JSON will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={minifiedJson} />
+      <DownloadButton data={minifiedJson} filename="minified.json" mimeType="application/json" />
     </div>
   );
 }

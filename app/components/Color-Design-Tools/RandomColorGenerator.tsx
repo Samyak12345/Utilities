@@ -16,10 +16,12 @@ export default function RandomColorGenerator() {
   }, []);
 
   return (
-    <div>
-      <Button onClick={handleGenerate}>Generate Random Color</Button>
-      <OutputBox value={color} placeholder="Random color will appear here..." />
-      <div style={{ backgroundColor: color, height: "50px", width: "100px", marginTop: "10px" }}></div>
+    <div className="flex flex-col items-center">
+      <Button onClick={handleGenerate} className="mb-4">
+        Generate Random Color
+      </Button>
+      <OutputBox value={color} placeholder="Random color will appear here..." className="text-center mb-4" />
+      <div style={{ backgroundColor: color, height: "100px", width: "100px", marginTop: "10px", borderRadius: "8px" }}></div>
       <div className="mt-4">
         <CopyToClipboard text={color} />
       </div>

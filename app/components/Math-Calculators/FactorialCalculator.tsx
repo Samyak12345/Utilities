@@ -20,10 +20,12 @@ export default function FactorialCalculator() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <InputBox value={number} onChange={(e) => setNumber(e.target.value)} placeholder="Enter a number here..." />
-      <Button onClick={handleCalculate}>Calculate Factorial</Button>
-      <OutputBox value={result} placeholder="Factorial result will appear here..." />
+      <Button onClick={handleCalculate} className="mb-4">
+        Calculate Factorial
+      </Button>
+      <OutputBox value={result} placeholder="Factorial result will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={result} />
     </div>
   );

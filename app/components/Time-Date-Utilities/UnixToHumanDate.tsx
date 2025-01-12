@@ -21,10 +21,12 @@ export default function UnixToHumanDate() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <InputBox value={timestamp} onChange={(e) => setTimestamp(e.target.value)} placeholder="Enter Unix timestamp here..." />
-      <Button onClick={handleConvert}>Convert to Human-Readable Date</Button>
-      <OutputBox value={date} placeholder="Date output will appear here..." />
+      <Button onClick={handleConvert} className="mb-4">
+        Convert to Human-Readable Date
+      </Button>
+      <OutputBox value={date} placeholder="Date output will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={date} />
     </div>
   );
