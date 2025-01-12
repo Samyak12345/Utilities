@@ -18,21 +18,13 @@ export default function CelsiusToFahrenheit() {
     setFahrenheit(((celsiusValue * 9) / 5 + 32).toFixed(2));
   };
 
-  const handleFileSelect = (file: File) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      if (e.target && e.target.result) {
-        setCelsius(e.target.result as string);
-      }
-    };
-    reader.readAsText(file);
-  };
-
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <InputBox value={celsius} onChange={(e) => setCelsius(e.target.value)} placeholder="Enter Celsius here..." />
-      <Button onClick={handleConvert}>Convert to Fahrenheit</Button>
-      <OutputBox value={fahrenheit} placeholder="Fahrenheit output will appear here..." />
+      <Button onClick={handleConvert} className="mb-4">
+        Convert to Fahrenheit
+      </Button>
+      <OutputBox value={fahrenheit} placeholder="Fahrenheit output will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={fahrenheit} />
     </div>
   );

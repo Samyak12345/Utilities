@@ -31,11 +31,13 @@ export default function MinifyJson() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <FileUpload onFileSelect={handleFileSelect} />
       <InputBox value={json} onChange={(e) => setJson(e.target.value)} placeholder="Enter JSON here..." />
-      <Button onClick={handleMinify}>Minify JSON</Button>
-      <OutputBox value={minifiedJson} placeholder="Minified JSON will appear here..." />
+      <Button onClick={handleMinify} className="mb-4">
+        Minify JSON
+      </Button>
+      <OutputBox value={minifiedJson} placeholder="Minified JSON will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={minifiedJson} />
       <DownloadButton data={minifiedJson} filename="minified.json" mimeType="application/json" />
     </div>

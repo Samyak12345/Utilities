@@ -38,14 +38,14 @@ export default function UpperLowerCase() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <FileUpload onFileSelect={handleFileSelect} />
       <InputBox value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter your text here..." />
       <div className="flex gap-4 mb-4 flex-wrap">
         <Button onClick={handleUppercase}>Convert to Uppercase</Button>
         <Button onClick={handleLowercase}>Convert to Lowercase</Button>
       </div>
-      <OutputBox value={result} placeholder="Result will appear here..." />
+      <OutputBox value={result} placeholder="Result will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={result} />
       <DownloadButton data={result} filename="output.txt" mimeType="text/plain" />
     </div>

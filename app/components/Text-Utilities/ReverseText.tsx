@@ -30,11 +30,13 @@ export default function ReverseText() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <FileUpload onFileSelect={handleFileSelect} />
       <InputBox value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter your text here..." />
-      <Button onClick={handleReverse}>Reverse Text</Button>
-      <OutputBox value={result} placeholder="Result will appear here..." />
+      <Button onClick={handleReverse} className="mb-4">
+        Reverse Text
+      </Button>
+      <OutputBox value={result} placeholder="Result will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={result} />
       <DownloadButton data={result} filename="output.txt" mimeType="text/plain" />
     </div>

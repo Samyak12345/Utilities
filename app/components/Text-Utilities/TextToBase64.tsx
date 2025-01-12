@@ -30,11 +30,13 @@ export default function TextToBase64() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <FileUpload onFileSelect={handleFileSelect} />
       <InputBox value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text here..." />
-      <Button onClick={handleConvert}>Convert to Base64</Button>
-      <OutputBox value={base64} placeholder="Base64 output will appear here..." />
+      <Button onClick={handleConvert} className="mb-4">
+        Convert to Base64
+      </Button>
+      <OutputBox value={base64} placeholder="Base64 output will appear here..." className="text-center mb-4" />
       <CopyToClipboard text={base64} />
       <DownloadButton data={base64} filename="output.txt" mimeType="text/plain" />
     </div>

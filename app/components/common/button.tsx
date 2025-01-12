@@ -3,12 +3,13 @@ import React from "react";
 interface ButtonProps {
   onClick: () => void;
   children: React.ReactNode;
+  className?: string;
 }
 
-export default function Button({ onClick, children }: ButtonProps) {
+export default function Button({ onClick, children, className = "" }: ButtonProps) {
   return (
     <button
-      className="bg-primary-dark text-white px-4 py-2 rounded mb-4 border-none cursor-pointer transition-colors duration-300 hover:bg-primary-light hover:text-primary-dark"
+      className={`bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105 ${className}`}
       onClick={onClick}
     >
       {children}
